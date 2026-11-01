@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070d18">
+<title>GBucks — игровой магазин</title>
+<style>
+:root{--bg:#070d18;--panel:#0d1829;--panel2:#101f35;--blue:#168cff;--cyan:#55c7ff;--text:#f3f7ff;--muted:#9aabc2;--line:#1d3553}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#12345a 0,transparent 45%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92%);margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid #ffffff12}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}.logo span{color:var(--cyan)}.badge{font-size:12px;color:#b8dfff;border:1px solid #28629a;border-radius:99px;padding:6px 11px}
+.hero{padding:64px 0 42px;text-align:center}.eyebrow{color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.03;margin:14px 0;background:linear-gradient(90deg,#fff,#70caff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:610px;margin:16px auto 0;font-size:17px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:28px 0 18px}.section-title h2{margin:0;font-size:25px}.section-title span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;overflow:hidden;box-shadow:0 12px 35px #0003}
+.card:before{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:#168cff18;filter:blur(5px);right:-45px;top:-50px}
+.coin{width:66px;height:66px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#164f88,#10253f);border:1px solid #3d8bd0;color:#8bd5ff;font-weight:900;font-size:22px;box-shadow:0 0 25px #168cff22}
+.amount{font-size:23px;font-weight:800;margin:18px 0 2px}.label{color:var(--muted);font-size:13px}.price{font-size:27px;font-weight:900;margin:18px 0}
+button,.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;border:0;border-radius:11px;padding:13px 16px;background:linear-gradient(90deg,#0877e8,#20a8ff);color:white;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 7px 22px #0877e833}
+button:hover,.btn:hover{filter:brightness(1.1)}.note{margin:22px 0 0;color:var(--muted);font-size:12px;text-align:center}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0}.feature{padding:18px;border:1px solid var(--line);background:#0b1626;border-radius:14px}.feature b{display:block;margin-bottom:5px}.feature span{font-size:13px;color:var(--muted)}
+footer{border-top:1px solid #ffffff12;padding:24px 0 36px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#000a;display:none;place-items:center;padding:18px;z-index:5}.modal.open{display:grid}.dialog{width:min(430px,100%);background:#0d1b2e;border:1px solid #2b5680;border-radius:18px;padding:24px;box-shadow:0 20px 70px #0009}.dialog h3{margin:0 0 8px;font-size:23px}.dialog p{color:var(--muted);font-size:14px}.dialog .actions{display:flex;gap:10px;margin-top:18px}.secondary{background:#1a2b40;box-shadow:none}.tiny{font-size:11px;color:#91a6bf;margin-top:14px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.grid{grid-template-columns:1fr}.hero{padding:48px 0 30px}.features{grid-template-columns:1fr}.section-title{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="logo" href="#">G<span>BUCKS</span></a><span class="badge">ИГРОВОЙ МАГАЗИН</span></header>
+<section class="hero">
+  <div class="eyebrow">Твой игровой баланс начинается здесь</div>
+  <h1>GBucks</h1>
+  <p>Выбери подходящий набор и оставь заявку. Мы подтвердим доступность товара и согласуем безопасный способ оплаты.</p>
+</section>
+<div class="section-title"><h2>Выбери набор</h2><span>Цены указаны в рублях</span></div>
+<section class="grid" aria-label="Каталог наборов">
+  <article class="card"><div class="coin">V</div><div class="amount">800 V-Bucks</div><div class="label">Небольшой набор</div><div class="price">430 ₽</div><button onclick="order('800 V-Bucks','430 ₽')">Выбрать набор</button></article>
+  <article class="card"><div class="coin">V</div><div class="amount">2 400 V-Bucks</div><div class="label">Популярный набор</div><div class="price">1 100 ₽</div><button onclick="order('2 400 V-Bucks','1 100 ₽')">Выбрать набор</button></article>
+  <article class="card"><div class="coin">V</div><div class="amount">4 500 V-Bucks</div><div class="label">Выгодный набор</div><div class="price">1 750 ₽</div><button onclick="order('4 500 V-Bucks','1 750 ₽')">Выбрать набор</button></article>
+  <article class="card"><div class="coin">V</div><div class="amount">12 500 V-Bucks</div><div class="label">Большой набор</div><div class="price">4 000 ₽</div><button onclick="order('12 500 V-Bucks','4 000 ₽')">Выбрать набор</button></article>
+</section>
+<div class="features">
+  <div class="feature"><b>🔒 Безопасное оформление</b><span>Оплата будет подключена после выбора подходящего платёжного провайдера.</span></div>
+  <div class="feature"><b>🎁 Реферальная программа</b><span>Планируем скидку 5% другу и бонус 50 ₽ пригласившему после успешной покупки.</span></div>
+  <div class="feature"><b>💬 Поддержка</b><span>По вопросам заказа можно связаться с магазином в Telegram.</span></div>
+</div>
+<footer><span>© GBucks. Независимый магазин.</span><span>Fortnite и V-Bucks — товарные знаки Epic Games. GBucks не связан с Epic Games.</span></footer>
+</div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+ <div class="dialog"><h3 id="dialog-title">Заявка на заказ</h3><p id="chosen"></p><p>Это демонстрационная версия сайта: кнопка пока не принимает оплату и не создаёт реальный заказ. После настройки законного способа продажи и платёжного провайдера здесь появится защищённая страница оплаты.</p>
+ <div class="actions"><button class="secondary" onclick="closeModal()">Закрыть</button><a class="btn" style="width:auto;flex:1" href="https://t.me/GBucksShopBot" target="_blank" rel="noopener">Открыть бота</a></div>
+ <div class="tiny">Не отправляйте пароли, коды входа или данные банковской карты в Telegram.</div></div>
+</div>
+<script>
+function order(item,price){document.getElementById('chosen').textContent='Вы выбрали: '+item+' — '+price+'.';document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+</script>
+</body>
+</html>
